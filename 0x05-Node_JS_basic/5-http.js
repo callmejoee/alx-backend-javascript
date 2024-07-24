@@ -5,7 +5,7 @@ const url = require('url');
 async function countStudents(path) {
   try {
     const data = await fs.readFile(path, 'utf8');
-    const lines = data.split('\n').filter(line => line.trim() !== '');
+    const lines = data.split('\n').filter((line) => line.trim() !== '');
 
     if (lines.length <= 1) {
       return { total: 0, fields: {} };
@@ -37,7 +37,7 @@ async function countStudents(path) {
 
 const app = http.createServer(async (req, res) => {
   const parsedUrl = url.parse(req.url, true);
-  const pathname = parsedUrl.pathname;
+  const { pathname } = parsedUrl;
 
   if (pathname === '/') {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
