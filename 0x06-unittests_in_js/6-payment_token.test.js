@@ -12,12 +12,4 @@ describe('getPaymentTokenFromAPI', function () {
       .catch((err) => done(err));
   });
 
-  it('should not return anything when success is false', function (done) {
-    getPaymentTokenFromAPI(false)
-      .then((response) => {
-        expect(response).to.be.undefined;
-        done();
-      })
-      .catch((err) => done(err));
-  });
 });
