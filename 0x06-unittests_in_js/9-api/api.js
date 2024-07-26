@@ -1,25 +1,20 @@
 const express = require('express');
-const app = express();
 
-app.get('/', (req, res) => {
+const app = express();
+const PORT = 7865;
+
+app.get('/', (_, res) => {
   res.send('Welcome to the payment system');
 });
 
-// New route for cart ID
-app.get('/cart/:id', (req, res) => {
-  const { id } = req.params;
+app.get('/cart/:id(\\d+)', (req, res) => {
+  const id = req.params.id;
 
-  // Validate if id is a number
-  if (!isNaN(parseInt(id, 10))) {
-    res.send(`Payment methods for cart ${id}`);
-  } else {
-    res.status(404).send('Not Found');
-  }
+  res.send(`Payment methods for cart ${id}`);
 });
 
-const server = app.listen(7865, () => {
-  console.log('API available on localhost port 7865');
+app.listen(PORT, () => {
+  console.log(`API available on localhost port ${PORT}`);
 });
 
-module.exports = server;
-
+module.exports = app;
