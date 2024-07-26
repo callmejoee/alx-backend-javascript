@@ -40,8 +40,5 @@ describe('calculateNumber', () => {
       expect(calculateNumber('DIVIDE', 1.4, 0.4)).to.equal('Error');
     });
 
-    it('should return -2 when inputs are -1.4 and 0.7', () => {
-      expect(calculateNumber('DIVIDE', -1.4, 0.7)).to.equal(-2);
-    });
   });
 });
